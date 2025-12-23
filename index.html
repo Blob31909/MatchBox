@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Match Clicker Simulator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* شكل اللهب الواقعي المتموج */
+      @keyframes flame-wave {
+        0% { transform: scale(1) rotate(-1deg) skewX(1deg); border-radius: 50% 50% 20% 20% / 80% 80% 20% 20%; }
+        25% { transform: scale(1.1, 0.9) rotate(2deg) skewX(-2deg); }
+        50% { transform: scale(0.9, 1.2) rotate(-2deg) skewX(3deg); border-radius: 45% 45% 25% 25% / 90% 90% 10% 10%; }
+        75% { transform: scale(1.05, 0.95) rotate(1deg) skewX(-1deg); }
+        100% { transform: scale(1) rotate(-1deg) skewX(1deg); border-radius: 50% 50% 20% 20% / 80% 80% 20% 20%; }
+      }
+
+      .flame-real {
+        animation: flame-wave 0.5s infinite ease-in-out;
+        transform-origin: bottom center;
+        filter: blur(0.5px);
+      }
+
+      @keyframes spark-fly {
+        0% { transform: translate(0, 0) scale(1); opacity: 1; }
+        100% { transform: translate(var(--tw-translate-x), var(--tw-translate-y)) scale(0); opacity: 0; }
+      }
+
+      .spark {
+        animation: spark-fly 0.4s forwards ease-out;
+      }
+
+      .wood-texture {
+        background-image: linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.1) 50%, rgba(255,255,255,0.05) 100%);
+      }
+
+      /* تأثير رمي العود السريع */
+      .match-discard {
+        transform: translate(-600px, -400px) rotate(-360deg) scale(0.5) !important;
+        opacity: 0 !important;
+        transition: all 0.7s cubic-bezier(0.5, 0, 0.75, 0) !important;
+      }
+
+      .perspective-text {
+        text-shadow: 0px 4px 10px rgba(0,0,0,0.9);
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+</head>
+  <body class="bg-zinc-950 text-zinc-100 overflow-hidden select-none">
+    <div id="root"></div>
+  </body>
+</html>
